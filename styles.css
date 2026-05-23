@@ -49,7 +49,7 @@ body {
   line-height: 1.5;
   color: var(--text);
   background: var(--bg);
-  padding-bottom: 70px;
+  overflow-x: hidden; /* prevent horizontal scroll on mobile */
 }
 
 a { color: inherit; text-decoration: none; }
@@ -1956,6 +1956,7 @@ ul { list-style: none; }
 /* Right content */
 .coupon-card__right {
   flex: 1;
+  min-width: 0; /* prevent overflow in flex */
   background: #fff;
   padding: 18px 20px;
   display: flex;
@@ -1978,6 +1979,7 @@ ul { list-style: none; }
   align-items: center;
   gap: 8px;
   margin-top: 4px;
+  min-width: 0;
 }
 .coupon-card__code {
   font-family: 'Courier New', monospace;
@@ -1990,7 +1992,11 @@ ul { list-style: none; }
   border-radius: var(--radius-sm);
   letter-spacing: 1px;
   flex: 1;
+  min-width: 0;
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .coupon-copy-btn {
   display: flex;
@@ -2085,9 +2091,6 @@ ul { list-style: none; }
   .coupon-card__code { font-size: 13px; padding: 5px 8px; }
 }
 
-/* ═══════════════════════════════════════════
-   BRANCHES SECTION
-═══════════════════════════════════════════ */
 /* ═══════════════════════════════════════════
    BRANCHES — MASTER DETAIL
 ═══════════════════════════════════════════ */
@@ -2323,10 +2326,13 @@ ul { list-style: none; }
 @media (max-width: 768px) {
   :root { --header-h: 58px; }
 
-  /* Top bar — solo lo esencial */
-  .top-bar { height: auto; padding: 6px 0; }
-  .top-bar__inner { flex-direction: column; gap: 4px; padding: 4px 16px; }
-  .top-bar__promos { flex-wrap: wrap; justify-content: center; gap: 6px; }
+  body { padding-bottom: 80px; } /* space for fixed WhatsApp button */
+
+  /* Top bar — row layout, more compact */
+  .top-bar { height: auto; padding: 5px 0; }
+  .top-bar__inner { flex-direction: row; flex-wrap: wrap; gap: 4px; padding: 4px 16px; justify-content: space-between; }
+  .top-bar__promos { flex-wrap: wrap; gap: 5px; }
+  .top-bar__item { font-size: 11px; }
   .top-bar__sep { display: none; }
   .top-bar__links { justify-content: center; }
   .top-bar__item { font-size: 11px; }
@@ -2398,10 +2404,17 @@ ul { list-style: none; }
   .banner-strip__grid { grid-template-columns: 1fr; gap: 10px; }
   .banner-card { padding: 16px 18px; }
 
+  /* Loyalty */
+  .loyalty-section { padding: 36px 0 32px; }
+
   /* Footer */
-  .footer__top { padding: 36px 0 28px; }
-  .footer__grid { grid-template-columns: 1fr; gap: 20px; }
+  .footer__top { padding: 32px 0 24px; }
+  .footer__grid { grid-template-columns: 1fr; gap: 0; }
   .footer__col { display: none; }
+  .footer__brand { text-align: center; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .footer__brand .footer__logo { justify-content: center; }
+  .footer__brand .footer__tagline { max-width: 100%; }
+  .footer__social { justify-content: center; }
   .footer__bottom .container { flex-direction: column; align-items: center; text-align: center; gap: 10px; }
 
   /* Cart */
@@ -2412,14 +2425,29 @@ ul { list-style: none; }
 }
 
 @media (max-width: 480px) {
+  /* Top bar: only show phone + delivery on tiny screens */
+  .top-bar__links { display: none; }
+  .top-bar__sep { display: none; }
+
   .delivery-grid { grid-template-columns: 1fr; }
   .hero { height: 240px; }
   .hero__title { font-size: 20px; }
   .hero__sub { display: none; }
   .products-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
   .product-card__img { height: 110px; font-size: 50px; }
+
+  /* Branches detail */
   .bdetail__maps { flex-direction: column; }
   .bdetail__mapbtn { justify-content: center; }
+  .bdetail__name { font-size: 18px; }
+
+  /* Coupons */
+  .coupon-card__left { min-width: 80px; padding: 16px 10px; }
+  .coupon-card__amount { font-size: 26px; }
+  .coupon-card__right { padding: 12px; }
+  .coupon-card__code { font-size: 12px; letter-spacing: 0.5px; padding: 5px 8px; }
+  .coupon-copy-btn { padding: 6px 8px; font-size: 11px; }
+
   .container { padding: 0 14px; }
   .factura-form { padding: 18px 14px; border-radius: var(--radius-lg); }
 }
