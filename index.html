@@ -369,7 +369,7 @@
   ═══════════════════════════════════════════ -->
   <section class="branches-section" id="branchesSection">
     <div class="container">
-      <div class="section-header section-header--row">
+      <div class="branches-header">
         <div>
           <h2 class="section-title">Nuestras sucursales</h2>
           <p class="section-sub">40 sucursales en el noroeste de Michoacán — encuentra la más cercana</p>
@@ -380,417 +380,27 @@
         </div>
       </div>
 
-      <!-- Zamora branches grid -->
-      <div class="branches-grid" id="branchesZamora">
-
-        <div class="branch-card">
-          <div class="branch-card__header">
-            <div class="branch-card__icon">🏪</div>
-            <div>
-              <h3 class="branch-card__name">El Valle</h3>
-              <span class="branch-card__tag">Zamora</span>
-            </div>
-          </div>
-          <div class="branch-card__address">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Av. Juárez #543, Col. El Valle, CP 59650
-          </div>
-          <div class="branch-card__phone">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            351-690-6500
-          </div>
-          <div class="branch-card__maps">
-            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Av.+Juárez+543,+Col.+El+Valle,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Google Maps
-            </a>
-            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Av.+Juárez+543,+Col.+El+Valle,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Apple Maps
-            </a>
+      <!-- Master-detail layout: Zamora -->
+      <div class="branches-master-detail" id="branchesZamora">
+        <div class="branches-list" id="branchListZamora">
+          <!-- populated by JS -->
+        </div>
+        <div class="branches-detail" id="branchDetail">
+          <div class="bdetail-placeholder">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.25"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <p>Selecciona una sucursal de la lista</p>
           </div>
         </div>
-
-        <div class="branch-card">
-          <div class="branch-card__header">
-            <div class="branch-card__icon">🏪</div>
-            <div>
-              <h3 class="branch-card__name">Jardinadas</h3>
-              <span class="branch-card__tag">Zamora</span>
-            </div>
-          </div>
-          <div class="branch-card__address">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Calle Dr. Alonso Martínez #683, Col. Jardinadas, CP 59680
-          </div>
-          <div class="branch-card__phone">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            351-690-6500
-          </div>
-          <div class="branch-card__maps">
-            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Calle+Dr.+Alonso+Martínez+683,+Col.+Jardinadas,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Google Maps
-            </a>
-            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Calle+Dr.+Alonso+Martínez+683,+Col.+Jardinadas,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Apple Maps
-            </a>
-          </div>
-        </div>
-
-        <div class="branch-card">
-          <div class="branch-card__header">
-            <div class="branch-card__icon">🏪</div>
-            <div>
-              <h3 class="branch-card__name">Jardines de Catedral</h3>
-              <span class="branch-card__tag">Zamora</span>
-            </div>
-          </div>
-          <div class="branch-card__address">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Calle Circunvalación #184, Col. Jardines de Catedral, CP 59600
-          </div>
-          <div class="branch-card__phone">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            351-690-6500
-          </div>
-          <div class="branch-card__maps">
-            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Circunvalación+184,+Col.+Jardines+de+Catedral,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Google Maps
-            </a>
-            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Circunvalación+184,+Col.+Jardines+de+Catedral,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Apple Maps
-            </a>
-          </div>
-        </div>
-
-        <div class="branch-card">
-          <div class="branch-card__header">
-            <div class="branch-card__icon">🏪</div>
-            <div>
-              <h3 class="branch-card__name">Vasco de Quiroga</h3>
-              <span class="branch-card__tag">Zamora Centro</span>
-            </div>
-          </div>
-          <div class="branch-card__address">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Calle Vasco de Quiroga #107, Col. Centro, CP 59600
-          </div>
-          <div class="branch-card__phone">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            351-690-6500
-          </div>
-          <div class="branch-card__maps">
-            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Vasco+de+Quiroga+107,+Col.+Centro,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Google Maps
-            </a>
-            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Vasco+de+Quiroga+107,+Col.+Centro,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Apple Maps
-            </a>
-          </div>
-        </div>
-
-        <div class="branch-card">
-          <div class="branch-card__header">
-            <div class="branch-card__icon">🏪</div>
-            <div>
-              <h3 class="branch-card__name">Madero</h3>
-              <span class="branch-card__tag">Zamora Centro</span>
-            </div>
-          </div>
-          <div class="branch-card__address">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Av. Juárez #9 Oriente, Col. Centro, CP 59600
-          </div>
-          <div class="branch-card__phone">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            351-690-6500
-          </div>
-          <div class="branch-card__maps">
-            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Av.+Juárez+9+Oriente,+Col.+Centro,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Google Maps
-            </a>
-            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Av.+Juárez+9+Oriente,+Col.+Centro,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Apple Maps
-            </a>
-          </div>
-        </div>
-
-        <div class="branch-card">
-          <div class="branch-card__header">
-            <div class="branch-card__icon">🏪</div>
-            <div>
-              <h3 class="branch-card__name">20 de Noviembre</h3>
-              <span class="branch-card__tag">Zamora</span>
-            </div>
-          </div>
-          <div class="branch-card__address">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Calle 20 de Noviembre #450, Zamora, CP 59660
-          </div>
-          <div class="branch-card__phone">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            351-690-6500
-          </div>
-          <div class="branch-card__maps">
-            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Calle+20+de+Noviembre+450,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Google Maps
-            </a>
-            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Calle+20+de+Noviembre+450,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Apple Maps
-            </a>
-          </div>
-        </div>
-
-        <div class="branch-card">
-          <div class="branch-card__header">
-            <div class="branch-card__icon">🏪</div>
-            <div>
-              <h3 class="branch-card__name">Aquiles Serdán</h3>
-              <span class="branch-card__tag">Zamora Centro</span>
-            </div>
-          </div>
-          <div class="branch-card__address">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Calle Aquiles Serdán #285, Col. Centro, CP 59600
-          </div>
-          <div class="branch-card__phone">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            351-690-6500
-          </div>
-          <div class="branch-card__maps">
-            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Aquiles+Serdán+285,+Col.+Centro,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Google Maps
-            </a>
-            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Aquiles+Serdán+285,+Col.+Centro,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Apple Maps
-            </a>
-          </div>
-        </div>
-
-        <div class="branch-card branch-card--super">
-          <div class="branch-card__header">
-            <div class="branch-card__icon">🏬</div>
-            <div>
-              <h3 class="branch-card__name">Super Zamora</h3>
-              <span class="branch-card__tag branch-card__tag--special">Superfarmacia</span>
-            </div>
-          </div>
-          <div class="branch-card__address">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Calle Martínez de Navarrete #25, Col. Jardinadas, CP 59680
-          </div>
-          <div class="branch-card__phone">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            351-690-6500
-          </div>
-          <div class="branch-card__maps">
-            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Martínez+de+Navarrete+25,+Col.+Jardinadas,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Google Maps
-            </a>
-            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Martínez+de+Navarrete+25,+Col.+Jardinadas,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Apple Maps
-            </a>
-          </div>
-        </div>
-
-        <div class="branch-card">
-          <div class="branch-card__header">
-            <div class="branch-card__icon">🏪</div>
-            <div>
-              <h3 class="branch-card__name">El Calvario</h3>
-              <span class="branch-card__tag">Zamora Centro</span>
-            </div>
-          </div>
-          <div class="branch-card__address">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Calle Hidalgo #21-B, Col. Centro, CP 59600
-          </div>
-          <div class="branch-card__phone">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            351-690-6500
-          </div>
-          <div class="branch-card__maps">
-            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Calle+Hidalgo+21-B,+Col.+Centro,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Google Maps
-            </a>
-            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Calle+Hidalgo+21-B,+Col.+Centro,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Apple Maps
-            </a>
-          </div>
-        </div>
-
-        <div class="branch-card">
-          <div class="branch-card__header">
-            <div class="branch-card__icon">🏪</div>
-            <div>
-              <h3 class="branch-card__name">San José</h3>
-              <span class="branch-card__tag">Zamora</span>
-            </div>
-          </div>
-          <div class="branch-card__address">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Av. 5 de Mayo #151, Col. Centro, CP 59699
-          </div>
-          <div class="branch-card__phone">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            351-690-6500
-          </div>
-          <div class="branch-card__maps">
-            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Av.+5+de+Mayo+151,+Col.+Centro,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Google Maps
-            </a>
-            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Av.+5+de+Mayo+151,+Col.+Centro,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Apple Maps
-            </a>
-          </div>
-        </div>
-
-        <div class="branch-card">
-          <div class="branch-card__header">
-            <div class="branch-card__icon">🏪</div>
-            <div>
-              <h3 class="branch-card__name">Arboledas</h3>
-              <span class="branch-card__tag">Zamora</span>
-            </div>
-          </div>
-          <div class="branch-card__address">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Av. del Árbol #1053, Col. Arboledas, CP 59698
-          </div>
-          <div class="branch-card__phone">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            351-690-6500
-          </div>
-          <div class="branch-card__maps">
-            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Av.+del+Árbol+1053,+Col.+Arboledas,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Google Maps
-            </a>
-            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Av.+del+Árbol+1053,+Col.+Arboledas,+Zamora,+Michoacán" target="_blank">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Apple Maps
-            </a>
-          </div>
-        </div>
-
       </div>
 
-      <!-- Región branches -->
-      <div class="branches-region" id="branchesRegion" style="display:none">
-        <div class="region-towns-grid">
-          <div class="town-card">
-            <h4 class="town-card__name">📍 Jacona</h4>
-            <p class="town-card__addr">Michoacán</p>
-            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Jacona,+Michoacán" target="_blank">Ver en mapa</a>
-          </div>
-          <div class="town-card">
-            <h4 class="town-card__name">📍 Los Reyes</h4>
-            <p class="town-card__addr">Michoacán</p>
-            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Los+Reyes,+Michoacán" target="_blank">Ver en mapa</a>
-          </div>
-          <div class="town-card">
-            <h4 class="town-card__name">📍 La Piedad</h4>
-            <p class="town-card__addr">3 sucursales · Michoacán</p>
-            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+La+Piedad,+Michoacán" target="_blank">Ver en mapa</a>
-          </div>
-          <div class="town-card">
-            <h4 class="town-card__name">📍 Peribán</h4>
-            <p class="town-card__addr">Michoacán</p>
-            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Peribán,+Michoacán" target="_blank">Ver en mapa</a>
-          </div>
-          <div class="town-card">
-            <h4 class="town-card__name">📍 Tingüindín</h4>
-            <p class="town-card__addr">Michoacán</p>
-            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Tingüindín,+Michoacán" target="_blank">Ver en mapa</a>
-          </div>
-          <div class="town-card">
-            <h4 class="town-card__name">📍 Zacapu</h4>
-            <p class="town-card__addr">2 sucursales · Michoacán</p>
-            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Zacapu,+Michoacán" target="_blank">Ver en mapa</a>
-          </div>
-          <div class="town-card">
-            <h4 class="town-card__name">📍 Churintzio</h4>
-            <p class="town-card__addr">Michoacán</p>
-            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Churintzio,+Michoacán" target="_blank">Ver en mapa</a>
-          </div>
-          <div class="town-card">
-            <h4 class="town-card__name">📍 Purépero</h4>
-            <p class="town-card__addr">Michoacán</p>
-            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Purépero,+Michoacán" target="_blank">Ver en mapa</a>
-          </div>
-          <div class="town-card">
-            <h4 class="town-card__name">📍 Chilchota</h4>
-            <p class="town-card__addr">Michoacán</p>
-            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Chilchota,+Michoacán" target="_blank">Ver en mapa</a>
-          </div>
-          <div class="town-card">
-            <h4 class="town-card__name">📍 Tangancícuaro</h4>
-            <p class="town-card__addr">Michoacán</p>
-            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Tangancícuaro,+Michoacán" target="_blank">Ver en mapa</a>
-          </div>
-          <div class="town-card">
-            <h4 class="town-card__name">📍 Chavinda</h4>
-            <p class="town-card__addr">Michoacán</p>
-            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Chavinda,+Michoacán" target="_blank">Ver en mapa</a>
-          </div>
-          <div class="town-card">
-            <h4 class="town-card__name">📍 Ario de Rosales</h4>
-            <p class="town-card__addr">Michoacán</p>
-            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Ario+de+Rosales,+Michoacán" target="_blank">Ver en mapa</a>
-          </div>
-          <div class="town-card">
-            <h4 class="town-card__name">📍 Vista Hermosa</h4>
-            <p class="town-card__addr">Michoacán</p>
-            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Vista+Hermosa,+Michoacán" target="_blank">Ver en mapa</a>
-          </div>
-          <div class="town-card">
-            <h4 class="town-card__name">📍 La Barca</h4>
-            <p class="town-card__addr">Jalisco</p>
-            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+La+Barca,+Jalisco" target="_blank">Ver en mapa</a>
-          </div>
-          <div class="town-card">
-            <h4 class="town-card__name">📍 Santa Clara</h4>
-            <p class="town-card__addr">Michoacán</p>
-            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Santa+Clara,+Michoacán" target="_blank">Ver en mapa</a>
-          </div>
-          <div class="town-card">
-            <h4 class="town-card__name">📍 Yurécuaro</h4>
-            <p class="town-card__addr">Michoacán</p>
-            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Yurécuaro,+Michoacán" target="_blank">Ver en mapa</a>
-          </div>
-          <div class="town-card">
-            <h4 class="town-card__name">📍 Pénjamo</h4>
-            <p class="town-card__addr">Guanajuato</p>
-            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Pénjamo,+Guanajuato" target="_blank">Ver en mapa</a>
-          </div>
-          <div class="town-card">
-            <h4 class="town-card__name">📍 Ocampo</h4>
-            <p class="town-card__addr">Michoacán</p>
-            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Ocampo,+Michoacán" target="_blank">Ver en mapa</a>
-          </div>
-        </div>
+      <!-- Region pills -->
+      <div class="branches-region-pills" id="branchesRegion" style="display:none">
+        <!-- populated by JS -->
       </div>
 
     </div>
   </section>
+
 
   <!-- ═══════════════════════════════════════════
        BANNER STRIP
@@ -819,6 +429,253 @@
             <p>Tarjeta, efectivo, OXXO Pay o transferencia</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PROGRAMA DE LEALTAD
+  ═══════════════════════════════════════════ -->
+  <section class="loyalty-section" id="loyaltySection">
+    <div class="container">
+      <div class="loyalty-wrap">
+
+        <!-- Izquierda: info + tiers -->
+        <div class="loyalty-left">
+          <div class="loyalty-eyebrow">🏆 Club Farmacia Zamora</div>
+          <h2 class="loyalty-title">Entre más compras,<br>más ahorras</h2>
+          <p class="loyalty-subtitle">Únete gratis al Club Farmacia Zamora y desbloquea descuentos exclusivos con cada compra. Tu código de descuento crece contigo.</p>
+
+          <div class="loyalty-steps">
+            <div class="loyalty-step">
+              <div class="loyalty-step__icon loyalty-step__icon--bronze">🥉</div>
+              <div class="loyalty-step__info">
+                <span class="loyalty-step__name">Bronce</span>
+                <span class="loyalty-step__range">1–2 compras</span>
+              </div>
+              <span class="loyalty-step__pct loyalty-step__pct--bronze">5%</span>
+            </div>
+            <div class="loyalty-step">
+              <div class="loyalty-step__icon loyalty-step__icon--silver">🥈</div>
+              <div class="loyalty-step__info">
+                <span class="loyalty-step__name">Plata</span>
+                <span class="loyalty-step__range">3–5 compras</span>
+              </div>
+              <span class="loyalty-step__pct loyalty-step__pct--silver">10%</span>
+            </div>
+            <div class="loyalty-step">
+              <div class="loyalty-step__icon loyalty-step__icon--gold">🥇</div>
+              <div class="loyalty-step__info">
+                <span class="loyalty-step__name">Oro</span>
+                <span class="loyalty-step__range">6–11 compras</span>
+              </div>
+              <span class="loyalty-step__pct loyalty-step__pct--gold">15%</span>
+            </div>
+            <div class="loyalty-step">
+              <div class="loyalty-step__icon loyalty-step__icon--diamond">💎</div>
+              <div class="loyalty-step__info">
+                <span class="loyalty-step__name">Diamante</span>
+                <span class="loyalty-step__range">12+ compras</span>
+              </div>
+              <span class="loyalty-step__pct loyalty-step__pct--diamond">20%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Derecha: panel registro / dashboard -->
+        <div class="loyalty-panel" id="loyaltyPanel">
+
+          <!-- Sin registrar -->
+          <div class="loyalty-register" id="loyaltyRegister">
+            <h3 class="loyalty-panel__title">Crea tu cuenta gratis</h3>
+            <p class="loyalty-panel__sub">Tu código personal se genera al instante.</p>
+            <form class="loyalty-form" id="loyaltyForm" onsubmit="registerLoyalty(event)">
+              <div class="form-group">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-input" id="loyaltyName" placeholder="Ej. María García" required />
+              </div>
+              <div class="form-group" style="margin-bottom:18px">
+                <label class="form-label">Teléfono</label>
+                <input type="tel" class="form-input" id="loyaltyPhone" placeholder="Ej. 3516906500" maxlength="10" required />
+              </div>
+              <button type="submit" class="btn btn--primary btn--full">
+                🎁 Unirme al Club Farmacia Zamora
+              </button>
+            </form>
+          </div>
+
+          <!-- Dashboard registrado -->
+          <div class="loyalty-dashboard" id="loyaltyDashboard" style="display:none">
+
+            <!-- Mini tarjeta de membresía -->
+            <div class="loyalty-card" id="loyaltyCard">
+              <div class="loyalty-card__bg"></div>
+              <div class="loyalty-card__top">
+                <div class="loyalty-card__logo">
+                  <svg viewBox="0 0 40 40" width="22" height="22" fill="none"><rect x="15" y="5" width="10" height="30" rx="2" fill="#5CB85C"/><rect x="5" y="15" width="30" height="10" rx="2" fill="#5CB85C"/></svg>
+                  <span>Club Farmacia Zamora</span>
+                </div>
+                <div class="loyalty-card__tier" id="cardTierBadge">🥉 Bronce</div>
+              </div>
+              <div class="loyalty-card__name" id="cardName">Tu nombre</div>
+              <div class="loyalty-card__stats">
+                <div class="loyalty-card__stat">
+                  <span class="loyalty-card__stat-val" id="cardPurchases">0</span>
+                  <span class="loyalty-card__stat-label">compras</span>
+                </div>
+                <div class="loyalty-card__stat">
+                  <span class="loyalty-card__stat-val" id="cardSpent">$0</span>
+                  <span class="loyalty-card__stat-label">gastado</span>
+                </div>
+                <div class="loyalty-card__stat">
+                  <span class="loyalty-card__stat-val" id="cardDiscount">5%</span>
+                  <span class="loyalty-card__stat-label">descuento</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Código -->
+            <div class="loyalty-code-box">
+              <div class="loyalty-code-box__label">Tu código exclusivo</div>
+              <div class="loyalty-code-box__row">
+                <span class="loyalty-code-box__code" id="loyaltyCode">—</span>
+                <button class="coupon-copy-btn" onclick="copyLoyaltyCode()" id="copyLoyaltyBtn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                  Copiar
+                </button>
+              </div>
+              <p class="loyalty-code-box__note" id="loyaltyCodeNote">Aplica en tu carrito — sin mínimo de compra</p>
+            </div>
+
+            <!-- Progreso -->
+            <div class="loyalty-progress" id="loyaltyProgress">
+              <div class="loyalty-progress__labels">
+                <span id="progressLabel">Progreso a Plata</span>
+                <span id="progressCount">0 / 3 compras</span>
+              </div>
+              <div class="loyalty-progress__bar">
+                <div class="loyalty-progress__fill" id="progressFill" style="width:0%"></div>
+              </div>
+              <p class="loyalty-progress__tip" id="progressTip"></p>
+            </div>
+
+            <button class="loyalty-logout" onclick="resetLoyalty()">Salir de mi cuenta</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CUPONES DE DESCUENTO
+  ═══════════════════════════════════════════ -->
+  <section class="coupons-section" id="couponsSection">
+    <div class="container">
+      <div class="section-header" style="text-align:center; max-width:600px; margin:0 auto 36px;">
+        <div class="coupons-eyebrow">🎁 Programa de lealtad</div>
+        <h2 class="section-title">Cupones de descuento exclusivos</h2>
+        <p class="section-sub">Copia el código, aplícalo en tu carrito y ahorra en tu próxima compra. ¡Úsalos antes de que expiren!</p>
+      </div>
+
+      <div class="coupons-grid">
+
+        <!-- $20 off -->
+        <div class="coupon-card coupon-card--teal">
+          <div class="coupon-card__left">
+            <div class="coupon-card__amount">$20</div>
+            <div class="coupon-card__label">de descuento</div>
+          </div>
+          <div class="coupon-card__divider">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="coupon-card__right">
+            <div class="coupon-card__min">Compra mínima <strong>$150</strong></div>
+            <div class="coupon-card__category">Todos los productos</div>
+            <div class="coupon-card__code-wrap">
+              <span class="coupon-card__code" id="code-20">ZAMORA20</span>
+              <button class="coupon-copy-btn" onclick="copyCoupon('ZAMORA20', this)" title="Copiar código">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                Copiar
+              </button>
+            </div>
+            <div class="coupon-card__exp">Válido hasta 31 dic 2025</div>
+          </div>
+        </div>
+
+        <!-- $30 off -->
+        <div class="coupon-card coupon-card--green">
+          <div class="coupon-card__left">
+            <div class="coupon-card__amount">$30</div>
+            <div class="coupon-card__label">de descuento</div>
+          </div>
+          <div class="coupon-card__divider">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="coupon-card__right">
+            <div class="coupon-card__min">Compra mínima <strong>$200</strong></div>
+            <div class="coupon-card__category">Farmacia y Dermo</div>
+            <div class="coupon-card__code-wrap">
+              <span class="coupon-card__code" id="code-30">ZAMORA30</span>
+              <button class="coupon-copy-btn" onclick="copyCoupon('ZAMORA30', this)" title="Copiar código">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                Copiar
+              </button>
+            </div>
+            <div class="coupon-card__exp">Válido hasta 31 dic 2025</div>
+          </div>
+        </div>
+
+        <!-- $50 off -->
+        <div class="coupon-card coupon-card--orange">
+          <div class="coupon-card__left">
+            <div class="coupon-card__amount">$50</div>
+            <div class="coupon-card__label">de descuento</div>
+          </div>
+          <div class="coupon-card__divider">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="coupon-card__right">
+            <div class="coupon-card__min">Compra mínima <strong>$350</strong></div>
+            <div class="coupon-card__category">Todos los productos</div>
+            <div class="coupon-card__code-wrap">
+              <span class="coupon-card__code" id="code-50">ZAMORA50</span>
+              <button class="coupon-copy-btn" onclick="copyCoupon('ZAMORA50', this)" title="Copiar código">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                Copiar
+              </button>
+            </div>
+            <div class="coupon-card__exp">Válido hasta 31 dic 2025</div>
+          </div>
+        </div>
+
+        <!-- $100 off -->
+        <div class="coupon-card coupon-card--purple">
+          <div class="coupon-card__left">
+            <div class="coupon-card__amount">$100</div>
+            <div class="coupon-card__label">de descuento</div>
+          </div>
+          <div class="coupon-card__divider">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="coupon-card__right">
+            <div class="coupon-card__min">Compra mínima <strong>$600</strong></div>
+            <div class="coupon-card__category">Todos los productos</div>
+            <div class="coupon-card__code-wrap">
+              <span class="coupon-card__code" id="code-100">ZAMORA100</span>
+              <button class="coupon-copy-btn" onclick="copyCoupon('ZAMORA100', this)" title="Copiar código">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                Copiar
+              </button>
+            </div>
+            <div class="coupon-card__exp">Válido hasta 31 dic 2025</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="coupons-footer">
+        <p>💡 Aplica tu cupón directamente en el carrito al momento de tu compra. Un cupón por pedido.</p>
       </div>
     </div>
   </section>
@@ -1028,6 +885,16 @@
     </div>
 
     <div class="cart-sidebar__footer" id="cartFooter" style="display:none">
+      <!-- Cupón -->
+      <div class="cart-coupon">
+        <label class="cart-label">Cupón de descuento</label>
+        <div class="cart-coupon__row">
+          <input type="text" class="cart-coupon__input" id="couponInput" placeholder="Ej. ZAMORA50" />
+          <button class="cart-coupon__btn" id="couponBtn" onclick="applyCoupon()">Aplicar</button>
+        </div>
+        <div class="cart-coupon__msg" id="couponMsg"></div>
+      </div>
+
       <div class="cart-delivery-select">
         <label class="cart-label">Método de entrega</label>
         <select class="cart-select" id="cartDelivery">
@@ -1041,6 +908,10 @@
         <div class="cart-summary__row">
           <span>Subtotal</span>
           <span id="cartSubtotal">$0.00</span>
+        </div>
+        <div class="cart-summary__row cart-summary__row--discount" id="cartDiscountRow" style="display:none">
+          <span>Descuento cupón</span>
+          <span id="cartDiscount" style="color:var(--green)">-$0.00</span>
         </div>
         <div class="cart-summary__row" id="cartShippingRow">
           <span>Envío</span>

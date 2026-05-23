@@ -253,20 +253,37 @@ function removeFromCart(id) {
 }
 
 function updateCartTotals() {
-  const subtotal   = Object.entries(cart).reduce((s, [id, qty]) => {
+  const subtotal  = Object.entries(cart).reduce((s, [id, qty]) => {
     const p = PRODUCTS.find(x => x.id === +id);
     return s + (p ? p.price * qty : 0);
   }, 0);
-  const delivery   = $('cartDelivery');
-  const method     = delivery ? delivery.value : 'zamora';
-  const shipping   = (method === 'zamora' && subtotal >= 200) ? 0 : 49;
-  const shippingEl = $('cartShipping');
-  const shipRow    = $('cartShippingRow');
+  const delivery  = $('cartDelivery');
+  const method    = delivery ? delivery.value : 'zamora';
+  const shipping  = (method === 'zamora' && subtotal >= 200) ? 0 : 49;
+
+  // Cupón — soporta monto fijo y porcentaje
+  let discountAmt = 0;
+  if (activeCoupon) {
+    if (subtotal >= activeCoupon.min) {
+      discountAmt = activeCoupon.isPercent
+        ? Math.round(subtotal * activeCoupon.discount / 100)
+        : activeCoupon.discount;
+    } else {
+      activeCoupon = null;
+      const msgEl = $('couponMsg');
+      if (msgEl) { msgEl.textContent = '⚠️ Cupón removido: subtotal insuficiente'; msgEl.className = 'cart-coupon__msg cart-coupon__msg--err'; }
+    }
+  }
+
+  const discountRow = $('cartDiscountRow');
+  const discountEl  = $('cartDiscount');
+  if (discountRow) discountRow.style.display = discountAmt > 0 ? 'flex' : 'none';
+  if (discountEl)  discountEl.textContent = `-${fmt(discountAmt)}`;
 
   $('cartSubtotal').textContent = fmt(subtotal);
+  const shippingEl = $('cartShipping');
   if (shippingEl) shippingEl.textContent = shipping === 0 ? 'GRATIS' : fmt(shipping);
-  if (shipRow)    shipRow.style.display = 'flex';
-  $('cartTotal').textContent = fmt(subtotal + shipping);
+  $('cartTotal').textContent = fmt(Math.max(0, subtotal - discountAmt + shipping));
 }
 
 /* ═══════════════════════════════════════════
@@ -360,12 +377,223 @@ function clearSearch() {
 }
 
 /* ═══════════════════════════════════════════
+   SISTEMA DE LEALTAD
+═══════════════════════════════════════════ */
+const LOYALTY_TIERS = [
+  { name: 'Bronce',  emoji: '🥉', minPurchases: 1,  maxPurchases: 2,  discount: 5,  color: 'bronze',  nextName: 'Plata',   nextAt: 3  },
+  { name: 'Plata',   emoji: '🥈', minPurchases: 3,  maxPurchases: 5,  discount: 10, color: 'silver',  nextName: 'Oro',     nextAt: 6  },
+  { name: 'Oro',     emoji: '🥇', minPurchases: 6,  maxPurchases: 11, discount: 15, color: 'gold',    nextName: 'Diamante',nextAt: 12 },
+  { name: 'Diamante',emoji: '💎', minPurchases: 12, maxPurchases: Infinity, discount: 20, color: 'diamond', nextName: null, nextAt: null },
+];
+
+function getTier(purchases) {
+  if (purchases < 1) return null;
+  return LOYALTY_TIERS.find(t => purchases >= t.minPurchases && purchases <= t.maxPurchases)
+      || LOYALTY_TIERS[LOYALTY_TIERS.length - 1];
+}
+
+function generateCode(name, phone, tier) {
+  const suffix = phone.slice(-4);
+  return `${tier.name.toUpperCase()}-${suffix}`;
+}
+
+function loadCustomer() {
+  try { return JSON.parse(localStorage.getItem('zam_loyalty') || 'null'); } catch { return null; }
+}
+function saveCustomer(data) {
+  localStorage.setItem('zam_loyalty', JSON.stringify(data));
+}
+
+function registerLoyalty(e) {
+  e.preventDefault();
+  const name  = $('loyaltyName').value.trim();
+  const phone = $('loyaltyPhone').value.trim().replace(/\D/g, '');
+  if (phone.length < 4) { showToast('⚠️ Ingresa tu teléfono completo'); return; }
+
+  const customer = { name, phone, purchases: 0, totalSpent: 0, joinDate: new Date().toISOString() };
+  saveCustomer(customer);
+  renderLoyaltyDashboard(customer);
+  showToast('🎉 ¡Bienvenido al Club Farmacia Zamora!');
+}
+
+function renderLoyaltyDashboard(customer) {
+  $('loyaltyRegister').style.display  = 'none';
+  $('loyaltyDashboard').style.display = 'block';
+
+  const tier     = getTier(customer.purchases);
+  const tierData = tier || { name: 'Sin tier', emoji: '⭐', discount: 0, color: 'bronze', nextName: 'Bronce', nextAt: 1 };
+  const code     = tier ? generateCode(customer.name, customer.phone, tier) : null;
+
+  // Card
+  const card      = $('loyaltyCard');
+  const colorClass = tier ? tierData.color : 'notier';
+  card.className  = `loyalty-card loyalty-card--${colorClass}`;
+  $('cardName').textContent      = customer.name.toUpperCase();
+  $('cardTierBadge').textContent = tier ? `${tierData.emoji} ${tierData.name}` : '⭐ Nuevo miembro';
+  $('cardPurchases').textContent = customer.purchases;
+  $('cardSpent').textContent     = `$${customer.totalSpent.toFixed(0)}`;
+  $('cardDiscount').textContent  = tier ? `${tierData.discount}%` : '—';
+
+  // Code box
+  const codeBox = $('loyaltyCode').closest('.loyalty-code-box');
+  if (tier && code) {
+    if (codeBox) codeBox.classList.remove('loyalty-code-box--pending');
+    $('loyaltyCode').textContent     = code;
+    $('loyaltyCodeNote').textContent = `${tierData.discount}% de descuento aplicado en tu carrito`;
+    COUPONS[code] = { discount: tierData.discount, min: 0, isPercent: true, desc: `¡${tierData.discount}% de descuento Club Farmacia Zamora! ${tierData.emoji}` };
+  } else {
+    if (codeBox) codeBox.classList.add('loyalty-code-box--pending');
+    $('loyaltyCode').textContent     = 'Pendiente de primera compra';
+    $('loyaltyCodeNote').textContent = 'Completa tu primera compra y tu código se desbloqueará automáticamente';
+  }
+
+  // Progress bar
+  const progressBox = $('loyaltyProgress');
+  const nextAt      = tierData.nextAt || 1;
+  const start       = tier ? tier.minPurchases : 0;
+  const progress    = tier
+    ? Math.min(((customer.purchases - start) / (nextAt - start)) * 100, 100)
+    : 0;
+  $('progressLabel').textContent = tier ? `Progreso a ${tierData.nextName}` : `Próximo nivel: 🥉 Bronce`;
+  $('progressCount').textContent = `${customer.purchases} / ${nextAt} compras`;
+  $('progressFill').style.width  = `${progress}%`;
+  const left = nextAt - customer.purchases;
+  $('progressTip').textContent   = left > 0
+    ? `¡Te ${left === 1 ? 'falta 1 compra' : `faltan ${left} compras`} para ${tier ? `subir a ${tierData.nextName}` : 'desbloquear Bronce y obtener 5% de descuento'}!`
+    : `¡Ya eres ${tierData.name}! 🎉`;
+  progressBox.style.display = tierData.nextAt ? 'block' : 'none';
+}
+
+function copyLoyaltyCode() {
+  const code = $('loyaltyCode').textContent;
+  if (!code || code.includes('primera')) return;
+  navigator.clipboard.writeText(code).then(() => {
+    const btn = $('copyLoyaltyBtn');
+    btn.classList.add('copied');
+    btn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> ¡Copiado!`;
+    // Pre-fill cart
+    const inp = $('couponInput');
+    if (inp) inp.value = code;
+    showToast(`✓ Código ${code} copiado al carrito`);
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copiar`;
+    }, 2500);
+  });
+}
+
+function recordPurchase(amount) {
+  const customer = loadCustomer();
+  if (!customer) return;
+  customer.purchases  += 1;
+  customer.totalSpent += amount;
+  saveCustomer(customer);
+  renderLoyaltyDashboard(customer);
+  // Show tier-up message
+  const tier = getTier(customer.purchases);
+  if (tier) {
+    const prevTier = getTier(customer.purchases - 1);
+    if (!prevTier || prevTier.name !== tier.name) {
+      setTimeout(() => showToast(`🎉 ¡Subiste a ${tier.emoji} ${tier.name}! Nuevo descuento: ${tier.discount}%`), 800);
+    }
+  }
+}
+
+function resetLoyalty() {
+  if (!confirm('¿Seguro que quieres salir de tu cuenta Club Farmacia Zamora?')) return;
+  localStorage.removeItem('zam_loyalty');
+  $('loyaltyRegister').style.display  = 'block';
+  $('loyaltyDashboard').style.display = 'none';
+  $('loyaltyForm').reset();
+}
+
+function initLoyalty() {
+  const customer = loadCustomer();
+  if (customer) renderLoyaltyDashboard(customer);
+}
+
+/* ═══════════════════════════════════════════
+   CUPONES
+═══════════════════════════════════════════ */
+const COUPONS = {
+  'ZAMORA20':  { discount: 20,  min: 150,  desc: '¡$20 de descuento aplicado! 🎉' },
+  'ZAMORA30':  { discount: 30,  min: 200,  desc: '¡$30 de descuento aplicado! 🎉' },
+  'ZAMORA50':  { discount: 50,  min: 350,  desc: '¡$50 de descuento aplicado! 🎉' },
+  'ZAMORA100': { discount: 100, min: 600,  desc: '¡$100 de descuento aplicado! 🎉' },
+};
+
+let activeCoupon = null; // { code, discount, min }
+
+function copyCoupon(code, btn) {
+  navigator.clipboard.writeText(code).then(() => {
+    btn.classList.add('copied');
+    btn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> ¡Copiado!`;
+    showToast(`✓ Código ${code} copiado`);
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copiar`;
+    }, 2500);
+    // Pre-fill cart coupon input
+    const inp = $('couponInput');
+    if (inp) inp.value = code;
+  }).catch(() => {
+    showToast(`Código: ${code}`);
+  });
+}
+
+function applyCoupon() {
+  const input   = $('couponInput');
+  const msgEl   = $('couponMsg');
+  const code    = input.value.trim().toUpperCase();
+  const coupon  = COUPONS[code];
+
+  if (!coupon) {
+    msgEl.textContent = '❌ Código no válido o expirado';
+    msgEl.className   = 'cart-coupon__msg cart-coupon__msg--err';
+    activeCoupon      = null;
+    updateCartTotals();
+    return;
+  }
+
+  const subtotal = Object.entries(cart).reduce((s, [id, qty]) => {
+    const p = PRODUCTS.find(x => x.id === +id);
+    return s + (p ? p.price * qty : 0);
+  }, 0);
+
+  if (subtotal < coupon.min) {
+    msgEl.textContent = `❌ Compra mínima de $${coupon.min} para usar este cupón (te faltan $${(coupon.min - subtotal).toFixed(0)})`;
+    msgEl.className   = 'cart-coupon__msg cart-coupon__msg--err';
+    activeCoupon      = null;
+    updateCartTotals();
+    return;
+  }
+
+  activeCoupon      = { code, ...coupon };
+  msgEl.textContent = coupon.desc;
+  msgEl.className   = 'cart-coupon__msg cart-coupon__msg--ok';
+  updateCartTotals();
+}
+
+/* ═══════════════════════════════════════════
    CHECKOUT PLACEHOLDER
 ═══════════════════════════════════════════ */
 function handleCheckout() {
-  const total = $('cartTotal').textContent;
-  showToast(`✓ Pedido procesado — Total: ${total}`);
-  setTimeout(closeCart, 300);
+  const total    = $('cartTotal').textContent;
+  const subtotal = Object.entries(cart).reduce((s, [id, qty]) => {
+    const p = PRODUCTS.find(x => x.id === +id);
+    return s + (p ? p.price * qty : 0);
+  }, 0);
+  cart         = {};
+  activeCoupon = null;
+  updateCartBadge();
+  renderCartSidebar();
+  const inp = $('couponInput');
+  if (inp) { inp.value = ''; }
+  const msg = $('couponMsg');
+  if (msg)  { msg.textContent = ''; }
+  closeCart();
+  showToast(`✓ ¡Pedido realizado! Total: ${total}`);
+  recordPurchase(subtotal);
 }
 
 /* ═══════════════════════════════════════════
@@ -407,12 +635,117 @@ function closeFacturaModal() {
 }
 
 /* ═══════════════════════════════════════════
+   BRANCH DATA
+═══════════════════════════════════════════ */
+const BRANCHES_ZAMORA = [
+  { id: 'elvalle',    name: 'El Valle',            tag: 'Zamora',        super: false, address: 'Av. Juárez #543, Col. El Valle, CP 59650',                      phone: '351-690-6500', gmaps: 'https://maps.google.com/?q=Av.+Juárez+543,+Col.+El+Valle,+Zamora,+Michoacán',                  amaps: 'https://maps.apple.com/?q=Av.+Juárez+543,+Col.+El+Valle,+Zamora,+Michoacán' },
+  { id: 'jardinadas', name: 'Jardinadas',           tag: 'Zamora',        super: false, address: 'Calle Dr. Alonso Martínez #683, Col. Jardinadas, CP 59680',      phone: '351-690-6500', gmaps: 'https://maps.google.com/?q=Calle+Dr.+Alonso+Martínez+683,+Col.+Jardinadas,+Zamora,+Michoacán', amaps: 'https://maps.apple.com/?q=Calle+Dr.+Alonso+Martínez+683,+Col.+Jardinadas,+Zamora,+Michoacán' },
+  { id: 'catedral',   name: 'Jardines de Catedral', tag: 'Zamora',        super: false, address: 'Calle Circunvalación #184, Col. Jardines de Catedral, CP 59600',  phone: '351-690-6500', gmaps: 'https://maps.google.com/?q=Circunvalación+184,+Col.+Jardines+de+Catedral,+Zamora,+Michoacán',   amaps: 'https://maps.apple.com/?q=Circunvalación+184,+Col.+Jardines+de+Catedral,+Zamora,+Michoacán' },
+  { id: 'vasco',      name: 'Vasco de Quiroga',     tag: 'Zamora Centro', super: false, address: 'Calle Vasco de Quiroga #107, Col. Centro, CP 59600',              phone: '351-690-6500', gmaps: 'https://maps.google.com/?q=Vasco+de+Quiroga+107,+Col.+Centro,+Zamora,+Michoacán',               amaps: 'https://maps.apple.com/?q=Vasco+de+Quiroga+107,+Col.+Centro,+Zamora,+Michoacán' },
+  { id: 'madero',     name: 'Madero',               tag: 'Zamora Centro', super: false, address: 'Av. Juárez #9 Oriente, Col. Centro, CP 59600',                    phone: '351-690-6500', gmaps: 'https://maps.google.com/?q=Av.+Juárez+9+Oriente,+Col.+Centro,+Zamora,+Michoacán',               amaps: 'https://maps.apple.com/?q=Av.+Juárez+9+Oriente,+Col.+Centro,+Zamora,+Michoacán' },
+  { id: 'noviembre',  name: '20 de Noviembre',      tag: 'Zamora',        super: false, address: 'Calle 20 de Noviembre #450, Zamora, CP 59660',                    phone: '351-690-6500', gmaps: 'https://maps.google.com/?q=Calle+20+de+Noviembre+450,+Zamora,+Michoacán',                    amaps: 'https://maps.apple.com/?q=Calle+20+de+Noviembre+450,+Zamora,+Michoacán' },
+  { id: 'aquiles',    name: 'Aquiles Serdán',       tag: 'Zamora Centro', super: false, address: 'Calle Aquiles Serdán #285, Col. Centro, CP 59600',                 phone: '351-690-6500', gmaps: 'https://maps.google.com/?q=Aquiles+Serdán+285,+Col.+Centro,+Zamora,+Michoacán',               amaps: 'https://maps.apple.com/?q=Aquiles+Serdán+285,+Col.+Centro,+Zamora,+Michoacán' },
+  { id: 'super',      name: 'Super Zamora',         tag: 'Superfarmacia', super: true,  address: 'Calle Martínez de Navarrete #25, Col. Jardinadas, CP 59680',       phone: '351-690-6500', gmaps: 'https://maps.google.com/?q=Martínez+de+Navarrete+25,+Col.+Jardinadas,+Zamora,+Michoacán',      amaps: 'https://maps.apple.com/?q=Martínez+de+Navarrete+25,+Col.+Jardinadas,+Zamora,+Michoacán' },
+  { id: 'calvario',   name: 'El Calvario',          tag: 'Zamora Centro', super: false, address: 'Calle Hidalgo #21-B, Col. Centro, CP 59600',                       phone: '351-690-6500', gmaps: 'https://maps.google.com/?q=Calle+Hidalgo+21-B,+Col.+Centro,+Zamora,+Michoacán',               amaps: 'https://maps.apple.com/?q=Calle+Hidalgo+21-B,+Col.+Centro,+Zamora,+Michoacán' },
+  { id: 'sanjose',    name: 'San José',             tag: 'Zamora',        super: false, address: 'Av. 5 de Mayo #151, Col. Centro, CP 59699',                        phone: '351-690-6500', gmaps: 'https://maps.google.com/?q=Av.+5+de+Mayo+151,+Col.+Centro,+Zamora,+Michoacán',                amaps: 'https://maps.apple.com/?q=Av.+5+de+Mayo+151,+Col.+Centro,+Zamora,+Michoacán' },
+  { id: 'arboledas',  name: 'Arboledas',            tag: 'Zamora',        super: false, address: 'Av. del Árbol #1053, Col. Arboledas, CP 59698',                    phone: '351-690-6500', gmaps: 'https://maps.google.com/?q=Av.+del+Árbol+1053,+Col.+Arboledas,+Zamora,+Michoacán',            amaps: 'https://maps.apple.com/?q=Av.+del+Árbol+1053,+Col.+Arboledas,+Zamora,+Michoacán' },
+];
+
+const BRANCHES_REGION = [
+  { name: 'Jacona',          state: 'Michoacán',  branches: 1, gmaps: 'https://maps.google.com/?q=Farmacia+Zamora,+Jacona,+Michoacán' },
+  { name: 'Los Reyes',       state: 'Michoacán',  branches: 1, gmaps: 'https://maps.google.com/?q=Farmacia+Zamora,+Los+Reyes,+Michoacán' },
+  { name: 'La Piedad',       state: 'Michoacán',  branches: 3, gmaps: 'https://maps.google.com/?q=Farmacia+Zamora,+La+Piedad,+Michoacán' },
+  { name: 'Peribán',         state: 'Michoacán',  branches: 1, gmaps: 'https://maps.google.com/?q=Farmacia+Zamora,+Peribán,+Michoacán' },
+  { name: 'Tingüindín',      state: 'Michoacán',  branches: 1, gmaps: 'https://maps.google.com/?q=Farmacia+Zamora,+Tingüindín,+Michoacán' },
+  { name: 'Zacapu',          state: 'Michoacán',  branches: 2, gmaps: 'https://maps.google.com/?q=Farmacia+Zamora,+Zacapu,+Michoacán' },
+  { name: 'Churintzio',      state: 'Michoacán',  branches: 1, gmaps: 'https://maps.google.com/?q=Farmacia+Zamora,+Churintzio,+Michoacán' },
+  { name: 'Purépero',        state: 'Michoacán',  branches: 1, gmaps: 'https://maps.google.com/?q=Farmacia+Zamora,+Purépero,+Michoacán' },
+  { name: 'Chilchota',       state: 'Michoacán',  branches: 1, gmaps: 'https://maps.google.com/?q=Farmacia+Zamora,+Chilchota,+Michoacán' },
+  { name: 'Tangancícuaro',   state: 'Michoacán',  branches: 1, gmaps: 'https://maps.google.com/?q=Farmacia+Zamora,+Tangancícuaro,+Michoacán' },
+  { name: 'Chavinda',        state: 'Michoacán',  branches: 1, gmaps: 'https://maps.google.com/?q=Farmacia+Zamora,+Chavinda,+Michoacán' },
+  { name: 'Ario de Rosales', state: 'Michoacán',  branches: 1, gmaps: 'https://maps.google.com/?q=Farmacia+Zamora,+Ario+de+Rosales,+Michoacán' },
+  { name: 'Vista Hermosa',   state: 'Michoacán',  branches: 1, gmaps: 'https://maps.google.com/?q=Farmacia+Zamora,+Vista+Hermosa,+Michoacán' },
+  { name: 'La Barca',        state: 'Jalisco',    branches: 1, gmaps: 'https://maps.google.com/?q=Farmacia+Zamora,+La+Barca,+Jalisco' },
+  { name: 'Santa Clara',     state: 'Michoacán',  branches: 1, gmaps: 'https://maps.google.com/?q=Farmacia+Zamora,+Santa+Clara,+Michoacán' },
+  { name: 'Yurécuaro',       state: 'Michoacán',  branches: 1, gmaps: 'https://maps.google.com/?q=Farmacia+Zamora,+Yurécuaro,+Michoacán' },
+  { name: 'Pénjamo',         state: 'Guanajuato', branches: 1, gmaps: 'https://maps.google.com/?q=Farmacia+Zamora,+Pénjamo,+Guanajuato' },
+  { name: 'Ocampo',          state: 'Michoacán',  branches: 1, gmaps: 'https://maps.google.com/?q=Farmacia+Zamora,+Ocampo,+Michoacán' },
+];
+
+const PIN_SVG  = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>`;
+const TEL_SVG  = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>`;
+const CHEV_SVG = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>`;
+
+function renderBranches() {
+  // ── Zamora list ──────────────────────────
+  const list = $('branchListZamora');
+  if (!list) return;
+  list.innerHTML = BRANCHES_ZAMORA.map((b, i) => `
+    <div class="blist-item${b.super ? ' blist-item--super' : ''}" data-idx="${i}" onclick="selectBranch(${i})">
+      <div class="blist-dot${b.super ? ' blist-dot--super' : ''}"></div>
+      <div class="blist-info">
+        <span class="blist-name">${b.name}</span>
+        <span class="blist-addr">${b.tag}</span>
+      </div>
+      ${CHEV_SVG}
+    </div>
+  `).join('');
+
+  // Auto-select first
+  selectBranch(0);
+
+  // ── Region pills ──────────────────────────
+  const pills = $('branchesRegion');
+  if (!pills) return;
+  pills.innerHTML = BRANCHES_REGION.map(r => `
+    <a class="region-pill" href="${r.gmaps}" target="_blank" rel="noopener">
+      ${PIN_SVG}
+      <span class="region-pill__name">${r.name}</span>
+      ${r.branches > 1 ? `<span class="region-pill__count">${r.branches}</span>` : ''}
+    </a>
+  `).join('');
+}
+
+function selectBranch(idx) {
+  const b = BRANCHES_ZAMORA[idx];
+  if (!b) return;
+
+  // Highlight list item
+  document.querySelectorAll('.blist-item').forEach((el, i) => {
+    el.classList.toggle('blist-item--active', i === idx);
+  });
+
+  // Render detail panel
+  $('branchDetail').innerHTML = `
+    <div class="bdetail">
+      <div class="bdetail__eyebrow${b.super ? ' bdetail__eyebrow--super' : ''}">${b.super ? '🏬 Superfarmacia' : '🏪 Farmacia'}</div>
+      <h3 class="bdetail__name">${b.name}</h3>
+      <div class="bdetail__info">
+        <div class="bdetail__row">${PIN_SVG}<span>${b.address}</span></div>
+        <div class="bdetail__row">${TEL_SVG}<span>${b.phone}</span></div>
+      </div>
+      <div class="bdetail__maps">
+        <a class="bdetail__mapbtn bdetail__mapbtn--google" href="${b.gmaps}" target="_blank" rel="noopener">
+          ${PIN_SVG} Google Maps
+        </a>
+        <a class="bdetail__mapbtn bdetail__mapbtn--apple" href="${b.amaps}" target="_blank" rel="noopener">
+          ${PIN_SVG} Apple Maps
+        </a>
+      </div>
+    </div>
+  `;
+}
+
+/* ═══════════════════════════════════════════
    INIT
 ═══════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
 
   // Render initial products
   renderProducts();
+
+  // Inicializar sistema de lealtad
+  initLoyalty();
 
   // Category pills
   document.querySelectorAll('.cat-pill').forEach(btn => {
@@ -523,14 +856,15 @@ document.addEventListener('DOMContentLoaded', () => {
     facturaForm.addEventListener('submit', e => handleFactura(e));
   }
 
-  // Branch region tabs
+  // Branch region tabs + render
+  renderBranches();
   document.querySelectorAll('.region-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.region-tab').forEach(t => t.classList.remove('region-tab--active'));
       tab.classList.add('region-tab--active');
       const region = tab.dataset.region;
       $('branchesZamora').style.display = region === 'zamora' ? 'grid' : 'none';
-      $('branchesRegion').style.display  = region === 'region'  ? 'block' : 'none';
+      $('branchesRegion').style.display  = region === 'region'  ? 'flex' : 'none';
     });
   });
 
