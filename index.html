@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Superfarmacia ZAMORA | Envío a domicilio · Zamora, Michoacán</title>
+  <meta name="description" content="La cadena de farmacias con mayor presencia en Zamora, Michoacán. Medicamentos, super, dermocosméticos y más con envío a domicilio." />
+  <link rel="icon" type="image/png" href="img/Farmacia-Zamora-Thumbnail.png" />
+  <link rel="apple-touch-icon" href="img/Farmacia-Zamora-Thumbnail.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       TOP ANNOUNCEMENT BAR
+  ═══════════════════════════════════════════ -->
+  <div class="top-bar">
+    <div class="top-bar__inner">
+      <div class="top-bar__promos">
+        <span class="top-bar__item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Entrega en menos de 30 min
+        </span>
+        <span class="top-bar__sep">|</span>
+        <span class="top-bar__item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          351-690-6500
+        </span>
+        <span class="top-bar__sep">|</span>
+        <span class="top-bar__item top-bar__highlight">
+          🚚 Envío gratis en pedidos +$200
+        </span>
+      </div>
+      <div class="top-bar__links">
+        <a href="#" class="top-bar__link">Iniciar sesión</a>
+        <a href="#" class="top-bar__link top-bar__link--cta">Registrarse</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════════ -->
+  <header class="header" id="header">
+    <div class="header__inner">
+
+      <!-- Logo -->
+      <a href="#" class="logo">
+        <img src="img/Farmacia-Zamora-logo.png" alt="Superfarmacia ZAMORA" class="logo__img" />
+        <!-- Fallback si no está la imagen -->
+        <div class="logo__fallback">
+          <div class="logo__icon">
+            <svg viewBox="0 0 40 40" width="40" height="40" fill="none">
+              <rect x="15" y="5" width="10" height="30" rx="2" fill="#5CB85C"/>
+              <rect x="5" y="15" width="30" height="10" rx="2" fill="#5CB85C"/>
+            </svg>
+          </div>
+          <div class="logo__text">
+            <span class="logo__super">SUPER</span>
+            <span class="logo__name">FARMACIA</span>
+            <span class="logo__zamora">ZAMORA</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Search -->
+      <div class="search-bar">
+        <div class="search-bar__inner">
+          <svg class="search-bar__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input
+            type="text"
+            class="search-bar__input"
+            placeholder="Busca medicamentos, vitaminas, productos de belleza..."
+            id="searchInput"
+          />
+          <button class="search-bar__btn">Buscar</button>
+        </div>
+      </div>
+
+      <!-- Header actions -->
+      <div class="header__actions">
+        <button class="icon-btn" title="Mi cuenta">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Mi cuenta</span>
+        </button>
+        <button class="icon-btn icon-btn--cart" id="cartBtn" title="Mi carrito">
+          <div class="cart-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            <span class="cart-badge" id="cartBadge">0</span>
+          </div>
+          <span>Carrito</span>
+        </button>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════
+       MOBILE DRAWER MENU
+  ═══════════════════════════════════════════ -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <nav class="drawer" id="drawer">
+    <div class="drawer__header">
+      <img src="img/Farmacia-Zamora-logo.png" alt="Superfarmacia ZAMORA" class="drawer__logo" />
+      <button class="drawer__close" id="drawerClose" aria-label="Cerrar menú">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="drawer__search">
+      <div class="search-bar__inner">
+        <svg class="search-bar__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" class="search-bar__input" placeholder="Buscar productos..." id="drawerSearch" />
+      </div>
+    </div>
+    <ul class="drawer__nav">
+      <li><button class="drawer__item" onclick="drawerFilter('all')"><span>🏪</span> Todo</button></li>
+      <li><button class="drawer__item" onclick="drawerFilter('super')"><span>🛒</span> Super</button></li>
+      <li><button class="drawer__item" onclick="drawerFilter('farmacia')"><span>💊</span> Farmacia</button></li>
+      <li><button class="drawer__item" onclick="drawerFilter('dermo')"><span>✨</span> Dermo</button></li>
+      <li><button class="drawer__item drawer__item--sale" onclick="drawerFilter('ofertas')"><span>🏷️</span> Ofertas</button></li>
+    </ul>
+    <div class="drawer__divider"></div>
+    <ul class="drawer__nav">
+      <li><button class="drawer__item" onclick="drawerScroll('deliverySection')"><span>🚚</span> Delivery</button></li>
+      <li><button class="drawer__item" onclick="drawerScroll('branchesSection')"><span>📍</span> Sucursales</button></li>
+      <li><button class="drawer__item" onclick="drawerScroll('facturaSection')"><span>🧾</span> Facturación</button></li>
+    </ul>
+    <div class="drawer__divider"></div>
+    <div class="drawer__contact">
+      <a class="drawer__wa" href="https://wa.me/523516906500?text=Hola!%20Me%20gustaría%20hacer%20un%20pedido%20en%20Superfarmacia%20Zamora" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Escríbenos por WhatsApp
+      </a>
+      <p class="drawer__phone">📞 351-690-6500</p>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════
+       CATEGORY NAV
+  ═══════════════════════════════════════════ -->
+  <nav class="cat-nav" id="catNav">
+    <div class="cat-nav__inner">
+      <button class="cat-pill cat-pill--active" data-cat="all">
+        <span class="cat-pill__emoji">🏪</span> Todo
+      </button>
+      <button class="cat-pill" data-cat="super">
+        <span class="cat-pill__emoji">🛒</span> Super
+      </button>
+      <button class="cat-pill" data-cat="farmacia">
+        <span class="cat-pill__emoji">💊</span> Farmacia
+      </button>
+      <button class="cat-pill" data-cat="dermo">
+        <span class="cat-pill__emoji">✨</span> Dermo
+      </button>
+      <button class="cat-pill" data-cat="ofertas">
+        <span class="cat-pill__emoji">🏷️</span> Ofertas
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════
+       HERO CAROUSEL
+  ═══════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero__track" id="heroTrack">
+
+      <!-- Slide 1 -->
+      <div class="hero__slide hero__slide--1">
+        <div class="hero__content">
+          <div class="hero__badge">🚚 Envío a domicilio</div>
+          <h1 class="hero__title">Envío gratis en<br/>pedidos +$200</h1>
+          <p class="hero__sub">Recibe tus compras en menos de 60 minutos directamente en tu puerta</p>
+          <div class="hero__actions">
+            <button class="btn btn--white" onclick="scrollToProducts()">Ordenar ahora</button>
+            <button class="btn btn--outline-white" onclick="scrollToDelivery()">Ver opciones de entrega</button>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__illustration hero__illustration--delivery">
+            <div class="hero-img hero-img--truck">🚚</div>
+            <div class="hero-badge-float">En menos de<br/><strong>30 min</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="hero__slide hero__slide--2">
+        <div class="hero__content">
+          <div class="hero__badge">💊 Farmacia</div>
+          <h1 class="hero__title">2×1 en vitaminas<br/>seleccionadas</h1>
+          <p class="hero__sub">Cuida tu salud con las mejores marcas. Vitaminas C, D, Zinc y más</p>
+          <div class="hero__actions">
+            <button class="btn btn--white" onclick="filterByCategory('farmacia')">Ver vitaminas</button>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__illustration">
+            <div class="hero-img">💊</div>
+            <div class="hero-img hero-img--2">🍊</div>
+            <div class="hero-badge-float hero-badge-float--green">2×1<br/><strong>HOY</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="hero__slide hero__slide--3">
+        <div class="hero__content">
+          <div class="hero__badge">✨ Dermo</div>
+          <h1 class="hero__title">Dermocosméticos<br/>hasta 40% off</h1>
+          <p class="hero__sub">Protección solar, cuidado facial, shampoos y más de las mejores marcas</p>
+          <div class="hero__actions">
+            <button class="btn btn--white" onclick="filterByCategory('dermo')">Ver ofertas dermo</button>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__illustration">
+            <div class="hero-img">☀️</div>
+            <div class="hero-img hero-img--2">💆</div>
+            <div class="hero-badge-float hero-badge-float--pink">Hasta<br/><strong>40% OFF</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel controls -->
+    <button class="hero__arrow hero__arrow--prev" id="heroPrev">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="hero__arrow hero__arrow--next" id="heroNext">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="hero__dots" id="heroDots">
+      <button class="hero__dot hero__dot--active" data-idx="0"></button>
+      <button class="hero__dot" data-idx="1"></button>
+      <button class="hero__dot" data-idx="2"></button>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       DELIVERY OPTIONS
+  ═══════════════════════════════════════════ -->
+  <section class="delivery-section" id="deliverySection">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">¿Cómo quieres recibir tu pedido?</h2>
+        <p class="section-sub">Elige la opción que más te convenga</p>
+      </div>
+      <div class="delivery-grid">
+
+        <div class="delivery-card delivery-card--featured">
+          <div class="delivery-card__badge">Recomendado</div>
+          <div class="delivery-card__icon delivery-card__icon--zamora">
+            <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+              <rect x="15" y="5" width="10" height="30" rx="2" fill="#fff"/>
+              <rect x="5" y="15" width="30" height="10" rx="2" fill="#fff"/>
+            </svg>
+          </div>
+          <div class="delivery-card__info">
+            <h3 class="delivery-card__name">Delivery Zamora</h3>
+            <p class="delivery-card__desc">Nuestros propios repartidores</p>
+            <div class="delivery-card__meta">
+              <span class="delivery-card__time">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                20–40 min
+              </span>
+              <span class="delivery-card__free">Gratis +$200</span>
+            </div>
+          </div>
+          <button class="btn btn--primary delivery-card__btn">Pedir aquí</button>
+        </div>
+
+        <div class="delivery-card">
+          <div class="delivery-card__icon delivery-card__icon--uber">
+            <span style="font-size:28px; font-weight:900; color:#1C1C1C; letter-spacing:-2px">Ue</span>
+          </div>
+          <div class="delivery-card__info">
+            <h3 class="delivery-card__name">Uber Eats</h3>
+            <p class="delivery-card__desc">Pide desde la app de Uber</p>
+            <div class="delivery-card__meta">
+              <span class="delivery-card__time">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                30–45 min
+              </span>
+            </div>
+          </div>
+          <button class="btn btn--outline delivery-card__btn">Pedir aquí</button>
+        </div>
+
+        <div class="delivery-card">
+          <div class="delivery-card__icon delivery-card__icon--rappi">
+            <span style="font-size:26px; font-weight:800; color:#FF441B; font-family: sans-serif">R</span>
+          </div>
+          <div class="delivery-card__info">
+            <h3 class="delivery-card__name">Rappi</h3>
+            <p class="delivery-card__desc">Pide desde la app de Rappi</p>
+            <div class="delivery-card__meta">
+              <span class="delivery-card__time">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                25–40 min
+              </span>
+            </div>
+          </div>
+          <button class="btn btn--outline delivery-card__btn">Pedir aquí</button>
+        </div>
+
+        <div class="delivery-card">
+          <div class="delivery-card__icon delivery-card__icon--didi">
+            <span style="font-size:22px; font-weight:800; color:#FF6300; font-family: sans-serif">DiDi</span>
+          </div>
+          <div class="delivery-card__info">
+            <h3 class="delivery-card__name">DiDi Food</h3>
+            <p class="delivery-card__desc">Pide desde la app de DiDi</p>
+            <div class="delivery-card__meta">
+              <span class="delivery-card__time">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                35–50 min
+              </span>
+            </div>
+          </div>
+          <button class="btn btn--outline delivery-card__btn">Pedir aquí</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PRODUCTS SECTION
+  ═══════════════════════════════════════════ -->
+  <section class="products-section" id="productsSection">
+    <div class="container">
+      <div class="section-header section-header--row">
+        <div>
+          <h2 class="section-title" id="productsTitle">Todos los productos</h2>
+          <p class="section-sub" id="productsCount">Cargando...</p>
+        </div>
+        <div class="products-sort">
+          <select class="sort-select" id="sortSelect">
+            <option value="default">Ordenar por</option>
+            <option value="price-asc">Precio: menor a mayor</option>
+            <option value="price-desc">Precio: mayor a menor</option>
+            <option value="sale">En oferta primero</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="products-grid" id="productsGrid">
+        <!-- Products rendered by JS -->
+      </div>
+
+      <div class="products-empty" id="productsEmpty" style="display:none">
+        <div class="products-empty__icon">🔍</div>
+        <h3>No encontramos resultados</h3>
+        <p>Intenta con otro término de búsqueda</p>
+        <button class="btn btn--primary" onclick="clearSearch()">Ver todos los productos</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SUCURSALES
+  ═══════════════════════════════════════════ -->
+  <section class="branches-section" id="branchesSection">
+    <div class="container">
+      <div class="section-header section-header--row">
+        <div>
+          <h2 class="section-title">Nuestras sucursales</h2>
+          <p class="section-sub">40 sucursales en el noroeste de Michoacán — encuentra la más cercana</p>
+        </div>
+        <div class="branches-region-tabs">
+          <button class="region-tab region-tab--active" data-region="zamora">Zamora</button>
+          <button class="region-tab" data-region="region">Región</button>
+        </div>
+      </div>
+
+      <!-- Zamora branches grid -->
+      <div class="branches-grid" id="branchesZamora">
+
+        <div class="branch-card">
+          <div class="branch-card__header">
+            <div class="branch-card__icon">🏪</div>
+            <div>
+              <h3 class="branch-card__name">El Valle</h3>
+              <span class="branch-card__tag">Zamora</span>
+            </div>
+          </div>
+          <div class="branch-card__address">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Av. Juárez #543, Col. El Valle, CP 59650
+          </div>
+          <div class="branch-card__phone">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            351-690-6500
+          </div>
+          <div class="branch-card__maps">
+            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Av.+Juárez+543,+Col.+El+Valle,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Google Maps
+            </a>
+            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Av.+Juárez+543,+Col.+El+Valle,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Apple Maps
+            </a>
+          </div>
+        </div>
+
+        <div class="branch-card">
+          <div class="branch-card__header">
+            <div class="branch-card__icon">🏪</div>
+            <div>
+              <h3 class="branch-card__name">Jardinadas</h3>
+              <span class="branch-card__tag">Zamora</span>
+            </div>
+          </div>
+          <div class="branch-card__address">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Calle Dr. Alonso Martínez #683, Col. Jardinadas, CP 59680
+          </div>
+          <div class="branch-card__phone">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            351-690-6500
+          </div>
+          <div class="branch-card__maps">
+            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Calle+Dr.+Alonso+Martínez+683,+Col.+Jardinadas,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Google Maps
+            </a>
+            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Calle+Dr.+Alonso+Martínez+683,+Col.+Jardinadas,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Apple Maps
+            </a>
+          </div>
+        </div>
+
+        <div class="branch-card">
+          <div class="branch-card__header">
+            <div class="branch-card__icon">🏪</div>
+            <div>
+              <h3 class="branch-card__name">Jardines de Catedral</h3>
+              <span class="branch-card__tag">Zamora</span>
+            </div>
+          </div>
+          <div class="branch-card__address">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Calle Circunvalación #184, Col. Jardines de Catedral, CP 59600
+          </div>
+          <div class="branch-card__phone">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            351-690-6500
+          </div>
+          <div class="branch-card__maps">
+            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Circunvalación+184,+Col.+Jardines+de+Catedral,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Google Maps
+            </a>
+            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Circunvalación+184,+Col.+Jardines+de+Catedral,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Apple Maps
+            </a>
+          </div>
+        </div>
+
+        <div class="branch-card">
+          <div class="branch-card__header">
+            <div class="branch-card__icon">🏪</div>
+            <div>
+              <h3 class="branch-card__name">Vasco de Quiroga</h3>
+              <span class="branch-card__tag">Zamora Centro</span>
+            </div>
+          </div>
+          <div class="branch-card__address">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Calle Vasco de Quiroga #107, Col. Centro, CP 59600
+          </div>
+          <div class="branch-card__phone">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            351-690-6500
+          </div>
+          <div class="branch-card__maps">
+            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Vasco+de+Quiroga+107,+Col.+Centro,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Google Maps
+            </a>
+            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Vasco+de+Quiroga+107,+Col.+Centro,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Apple Maps
+            </a>
+          </div>
+        </div>
+
+        <div class="branch-card">
+          <div class="branch-card__header">
+            <div class="branch-card__icon">🏪</div>
+            <div>
+              <h3 class="branch-card__name">Madero</h3>
+              <span class="branch-card__tag">Zamora Centro</span>
+            </div>
+          </div>
+          <div class="branch-card__address">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Av. Juárez #9 Oriente, Col. Centro, CP 59600
+          </div>
+          <div class="branch-card__phone">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            351-690-6500
+          </div>
+          <div class="branch-card__maps">
+            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Av.+Juárez+9+Oriente,+Col.+Centro,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Google Maps
+            </a>
+            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Av.+Juárez+9+Oriente,+Col.+Centro,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Apple Maps
+            </a>
+          </div>
+        </div>
+
+        <div class="branch-card">
+          <div class="branch-card__header">
+            <div class="branch-card__icon">🏪</div>
+            <div>
+              <h3 class="branch-card__name">20 de Noviembre</h3>
+              <span class="branch-card__tag">Zamora</span>
+            </div>
+          </div>
+          <div class="branch-card__address">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Calle 20 de Noviembre #450, Zamora, CP 59660
+          </div>
+          <div class="branch-card__phone">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            351-690-6500
+          </div>
+          <div class="branch-card__maps">
+            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Calle+20+de+Noviembre+450,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Google Maps
+            </a>
+            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Calle+20+de+Noviembre+450,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Apple Maps
+            </a>
+          </div>
+        </div>
+
+        <div class="branch-card">
+          <div class="branch-card__header">
+            <div class="branch-card__icon">🏪</div>
+            <div>
+              <h3 class="branch-card__name">Aquiles Serdán</h3>
+              <span class="branch-card__tag">Zamora Centro</span>
+            </div>
+          </div>
+          <div class="branch-card__address">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Calle Aquiles Serdán #285, Col. Centro, CP 59600
+          </div>
+          <div class="branch-card__phone">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            351-690-6500
+          </div>
+          <div class="branch-card__maps">
+            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Aquiles+Serdán+285,+Col.+Centro,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Google Maps
+            </a>
+            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Aquiles+Serdán+285,+Col.+Centro,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Apple Maps
+            </a>
+          </div>
+        </div>
+
+        <div class="branch-card branch-card--super">
+          <div class="branch-card__header">
+            <div class="branch-card__icon">🏬</div>
+            <div>
+              <h3 class="branch-card__name">Super Zamora</h3>
+              <span class="branch-card__tag branch-card__tag--special">Superfarmacia</span>
+            </div>
+          </div>
+          <div class="branch-card__address">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Calle Martínez de Navarrete #25, Col. Jardinadas, CP 59680
+          </div>
+          <div class="branch-card__phone">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            351-690-6500
+          </div>
+          <div class="branch-card__maps">
+            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Martínez+de+Navarrete+25,+Col.+Jardinadas,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Google Maps
+            </a>
+            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Martínez+de+Navarrete+25,+Col.+Jardinadas,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Apple Maps
+            </a>
+          </div>
+        </div>
+
+        <div class="branch-card">
+          <div class="branch-card__header">
+            <div class="branch-card__icon">🏪</div>
+            <div>
+              <h3 class="branch-card__name">El Calvario</h3>
+              <span class="branch-card__tag">Zamora Centro</span>
+            </div>
+          </div>
+          <div class="branch-card__address">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Calle Hidalgo #21-B, Col. Centro, CP 59600
+          </div>
+          <div class="branch-card__phone">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            351-690-6500
+          </div>
+          <div class="branch-card__maps">
+            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Calle+Hidalgo+21-B,+Col.+Centro,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Google Maps
+            </a>
+            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Calle+Hidalgo+21-B,+Col.+Centro,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Apple Maps
+            </a>
+          </div>
+        </div>
+
+        <div class="branch-card">
+          <div class="branch-card__header">
+            <div class="branch-card__icon">🏪</div>
+            <div>
+              <h3 class="branch-card__name">San José</h3>
+              <span class="branch-card__tag">Zamora</span>
+            </div>
+          </div>
+          <div class="branch-card__address">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Av. 5 de Mayo #151, Col. Centro, CP 59699
+          </div>
+          <div class="branch-card__phone">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            351-690-6500
+          </div>
+          <div class="branch-card__maps">
+            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Av.+5+de+Mayo+151,+Col.+Centro,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Google Maps
+            </a>
+            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Av.+5+de+Mayo+151,+Col.+Centro,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Apple Maps
+            </a>
+          </div>
+        </div>
+
+        <div class="branch-card">
+          <div class="branch-card__header">
+            <div class="branch-card__icon">🏪</div>
+            <div>
+              <h3 class="branch-card__name">Arboledas</h3>
+              <span class="branch-card__tag">Zamora</span>
+            </div>
+          </div>
+          <div class="branch-card__address">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Av. del Árbol #1053, Col. Arboledas, CP 59698
+          </div>
+          <div class="branch-card__phone">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            351-690-6500
+          </div>
+          <div class="branch-card__maps">
+            <a class="map-btn map-btn--google" href="https://maps.google.com/?q=Av.+del+Árbol+1053,+Col.+Arboledas,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Google Maps
+            </a>
+            <a class="map-btn map-btn--apple" href="https://maps.apple.com/?q=Av.+del+Árbol+1053,+Col.+Arboledas,+Zamora,+Michoacán" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Apple Maps
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Región branches -->
+      <div class="branches-region" id="branchesRegion" style="display:none">
+        <div class="region-towns-grid">
+          <div class="town-card">
+            <h4 class="town-card__name">📍 Jacona</h4>
+            <p class="town-card__addr">Michoacán</p>
+            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Jacona,+Michoacán" target="_blank">Ver en mapa</a>
+          </div>
+          <div class="town-card">
+            <h4 class="town-card__name">📍 Los Reyes</h4>
+            <p class="town-card__addr">Michoacán</p>
+            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Los+Reyes,+Michoacán" target="_blank">Ver en mapa</a>
+          </div>
+          <div class="town-card">
+            <h4 class="town-card__name">📍 La Piedad</h4>
+            <p class="town-card__addr">3 sucursales · Michoacán</p>
+            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+La+Piedad,+Michoacán" target="_blank">Ver en mapa</a>
+          </div>
+          <div class="town-card">
+            <h4 class="town-card__name">📍 Peribán</h4>
+            <p class="town-card__addr">Michoacán</p>
+            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Peribán,+Michoacán" target="_blank">Ver en mapa</a>
+          </div>
+          <div class="town-card">
+            <h4 class="town-card__name">📍 Tingüindín</h4>
+            <p class="town-card__addr">Michoacán</p>
+            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Tingüindín,+Michoacán" target="_blank">Ver en mapa</a>
+          </div>
+          <div class="town-card">
+            <h4 class="town-card__name">📍 Zacapu</h4>
+            <p class="town-card__addr">2 sucursales · Michoacán</p>
+            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Zacapu,+Michoacán" target="_blank">Ver en mapa</a>
+          </div>
+          <div class="town-card">
+            <h4 class="town-card__name">📍 Churintzio</h4>
+            <p class="town-card__addr">Michoacán</p>
+            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Churintzio,+Michoacán" target="_blank">Ver en mapa</a>
+          </div>
+          <div class="town-card">
+            <h4 class="town-card__name">📍 Purépero</h4>
+            <p class="town-card__addr">Michoacán</p>
+            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Purépero,+Michoacán" target="_blank">Ver en mapa</a>
+          </div>
+          <div class="town-card">
+            <h4 class="town-card__name">📍 Chilchota</h4>
+            <p class="town-card__addr">Michoacán</p>
+            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Chilchota,+Michoacán" target="_blank">Ver en mapa</a>
+          </div>
+          <div class="town-card">
+            <h4 class="town-card__name">📍 Tangancícuaro</h4>
+            <p class="town-card__addr">Michoacán</p>
+            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Tangancícuaro,+Michoacán" target="_blank">Ver en mapa</a>
+          </div>
+          <div class="town-card">
+            <h4 class="town-card__name">📍 Chavinda</h4>
+            <p class="town-card__addr">Michoacán</p>
+            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Chavinda,+Michoacán" target="_blank">Ver en mapa</a>
+          </div>
+          <div class="town-card">
+            <h4 class="town-card__name">📍 Ario de Rosales</h4>
+            <p class="town-card__addr">Michoacán</p>
+            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Ario+de+Rosales,+Michoacán" target="_blank">Ver en mapa</a>
+          </div>
+          <div class="town-card">
+            <h4 class="town-card__name">📍 Vista Hermosa</h4>
+            <p class="town-card__addr">Michoacán</p>
+            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Vista+Hermosa,+Michoacán" target="_blank">Ver en mapa</a>
+          </div>
+          <div class="town-card">
+            <h4 class="town-card__name">📍 La Barca</h4>
+            <p class="town-card__addr">Jalisco</p>
+            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+La+Barca,+Jalisco" target="_blank">Ver en mapa</a>
+          </div>
+          <div class="town-card">
+            <h4 class="town-card__name">📍 Santa Clara</h4>
+            <p class="town-card__addr">Michoacán</p>
+            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Santa+Clara,+Michoacán" target="_blank">Ver en mapa</a>
+          </div>
+          <div class="town-card">
+            <h4 class="town-card__name">📍 Yurécuaro</h4>
+            <p class="town-card__addr">Michoacán</p>
+            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Yurécuaro,+Michoacán" target="_blank">Ver en mapa</a>
+          </div>
+          <div class="town-card">
+            <h4 class="town-card__name">📍 Pénjamo</h4>
+            <p class="town-card__addr">Guanajuato</p>
+            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Pénjamo,+Guanajuato" target="_blank">Ver en mapa</a>
+          </div>
+          <div class="town-card">
+            <h4 class="town-card__name">📍 Ocampo</h4>
+            <p class="town-card__addr">Michoacán</p>
+            <a class="map-btn map-btn--google map-btn--sm" href="https://maps.google.com/?q=Farmacia+Zamora,+Ocampo,+Michoacán" target="_blank">Ver en mapa</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       BANNER STRIP
+  ═══════════════════════════════════════════ -->
+  <section class="banner-strip">
+    <div class="container">
+      <div class="banner-strip__grid">
+        <div class="banner-card banner-card--teal">
+          <div class="banner-card__icon">🏥</div>
+          <div>
+            <h4>Asesoría farmacéutica</h4>
+            <p>Consulta gratis con nuestros farmacéuticos certificados</p>
+          </div>
+        </div>
+        <div class="banner-card banner-card--green">
+          <div class="banner-card__icon">📱</div>
+          <div>
+            <h4>Pide por WhatsApp</h4>
+            <p>Escríbenos al 351-690-6500 y te ayudamos</p>
+          </div>
+        </div>
+        <div class="banner-card banner-card--orange">
+          <div class="banner-card__icon">💳</div>
+          <div>
+            <h4>Paga como quieras</h4>
+            <p>Tarjeta, efectivo, OXXO Pay o transferencia</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FACTURACIÓN
+  ═══════════════════════════════════════════ -->
+  <section class="factura-section" id="facturaSection">
+    <div class="container">
+      <div class="factura-inner">
+        <div class="factura-info">
+          <div class="factura-info__icon">🧾</div>
+          <h2 class="factura-info__title">Factura tu compra</h2>
+          <p class="factura-info__desc">Genera tu CFDI 4.0 de forma rápida y sencilla. Tienes hasta <strong>24 horas</strong> después de tu compra para solicitar tu factura.</p>
+          <ul class="factura-info__list">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              CFDI 4.0 con validez fiscal ante el SAT
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Enviada al correo en minutos
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Sin costo adicional
+            </li>
+          </ul>
+        </div>
+
+        <form class="factura-form" id="facturaForm" onsubmit="handleFactura(event)">
+          <h3 class="factura-form__title">Datos de facturación</h3>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Número de ticket / folio <span class="form-required">*</span></label>
+              <input type="text" class="form-input" placeholder="Ej. 00123456" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">RFC <span class="form-required">*</span></label>
+              <input type="text" class="form-input" placeholder="Ej. XAXX010101000" maxlength="13" required style="text-transform:uppercase" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Nombre / Razón Social <span class="form-required">*</span></label>
+            <input type="text" class="form-input" placeholder="Como aparece en tu constancia de situación fiscal" required />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Régimen fiscal <span class="form-required">*</span></label>
+              <select class="form-select" required>
+                <option value="">Selecciona...</option>
+                <option value="601">601 – General de Ley Personas Morales</option>
+                <option value="603">603 – Personas Morales con Fines no Lucrativos</option>
+                <option value="605">605 – Sueldos y Salarios</option>
+                <option value="606">606 – Arrendamiento</option>
+                <option value="608">608 – Demás Ingresos</option>
+                <option value="612">612 – Personas Físicas con Actividades Empresariales</option>
+                <option value="616">616 – Sin Obligaciones Fiscales</option>
+                <option value="621">621 – Incorporación Fiscal</option>
+                <option value="625">625 – Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas</option>
+                <option value="626">626 – Régimen Simplificado de Confianza</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Uso del CFDI <span class="form-required">*</span></label>
+              <select class="form-select" required>
+                <option value="">Selecciona...</option>
+                <option value="G01">G01 – Adquisición de mercancias</option>
+                <option value="G03">G03 – Gastos en general</option>
+                <option value="D01">D01 – Honorarios médicos y dentales</option>
+                <option value="D02">D02 – Gastos médicos por incapacidad</option>
+                <option value="D07">D07 – Primas por seguros de gastos médicos</option>
+                <option value="S01">S01 – Sin efectos fiscales</option>
+                <option value="CP01">CP01 – Pagos</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Correo electrónico <span class="form-required">*</span></label>
+            <input type="email" class="form-input" placeholder="tucorreo@ejemplo.com" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Código postal del domicilio fiscal <span class="form-required">*</span></label>
+            <input type="text" class="form-input" placeholder="Ej. 59600" maxlength="5" pattern="[0-9]{5}" required />
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--full btn--lg factura-submit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Solicitar factura
+          </button>
+          <p class="factura-legal">Al solicitar tu factura confirmas que los datos proporcionados son correctos y corresponden a tu constancia de situación fiscal vigente.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="container">
+        <div class="footer__grid">
+
+          <div class="footer__brand">
+            <div class="footer__logo">
+              <img src="img/Farmacia-Zamora-Thumbnail.png" alt="Superfarmacia ZAMORA" class="footer__logo-img" />
+            </div>
+            <p class="footer__tagline">La cadena de farmacias con mayor presencia en Zamora, Michoacán</p>
+            <div class="footer__social">
+              <a href="https://facebook.com/farmaciazamora.mx" class="social-btn" target="_blank" aria-label="Facebook">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+              </a>
+              <a href="https://instagram.com/farmacia.zamora" class="social-btn" target="_blank" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+              <a href="https://wa.me/523516906500" class="social-btn" target="_blank" aria-label="WhatsApp">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer__col">
+            <h4 class="footer__heading">Categorías</h4>
+            <ul class="footer__list">
+              <li><a href="#" onclick="filterByCategory('super')">Super</a></li>
+              <li><a href="#" onclick="filterByCategory('farmacia')">Farmacia</a></li>
+              <li><a href="#" onclick="filterByCategory('dermo')">Dermo</a></li>
+              <li><a href="#" onclick="filterByCategory('ofertas')">Ofertas</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__col">
+            <h4 class="footer__heading">Información</h4>
+            <ul class="footer__list">
+              <li><a href="#">Acerca de nosotros</a></li>
+              <li><a href="#">Términos y condiciones</a></li>
+              <li><a href="#">Política de privacidad</a></li>
+              <li><a href="#">Facturación</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__col">
+            <h4 class="footer__heading">Contacto</h4>
+            <ul class="footer__list footer__list--contact">
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Av. Guadalupe Victoria, Col. Centro, Zamora, Michoacán
+              </li>
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.63A2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                351-690-6500
+              </li>
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Lun–Dom: 8:00 am – 10:00 pm
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container">
+        <p>&copy; 2024 Superfarmacia ZAMORA. Todos los derechos reservados.</p>
+        <div class="footer__payments">
+          <span class="payment-badge">VISA</span>
+          <span class="payment-badge">MC</span>
+          <span class="payment-badge">AMEX</span>
+          <span class="payment-badge payment-badge--oxxo">OXXO</span>
+          <span class="payment-badge payment-badge--transfer">Transferencia</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════
+       CART SIDEBAR
+  ═══════════════════════════════════════════ -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-sidebar__header">
+      <h2 class="cart-sidebar__title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        Mi carrito
+      </h2>
+      <button class="cart-sidebar__close" id="cartClose">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="cart-sidebar__body" id="cartBody">
+      <div class="cart-empty" id="cartEmpty">
+        <div class="cart-empty__icon">🛒</div>
+        <h3>Tu carrito está vacío</h3>
+        <p>Agrega productos para continuar</p>
+        <button class="btn btn--primary" onclick="closeCart()">Explorar productos</button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+    </div>
+
+    <div class="cart-sidebar__footer" id="cartFooter" style="display:none">
+      <div class="cart-delivery-select">
+        <label class="cart-label">Método de entrega</label>
+        <select class="cart-select" id="cartDelivery">
+          <option value="zamora">🏪 Delivery Zamora (Gratis +$200)</option>
+          <option value="uber">🚗 Uber Eats</option>
+          <option value="rappi">🛵 Rappi</option>
+          <option value="didi">🟠 DiDi Food</option>
+        </select>
+      </div>
+      <div class="cart-summary">
+        <div class="cart-summary__row">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">$0.00</span>
+        </div>
+        <div class="cart-summary__row" id="cartShippingRow">
+          <span>Envío</span>
+          <span id="cartShipping">$49.00</span>
+        </div>
+        <div class="cart-summary__row cart-summary__row--total">
+          <span>Total</span>
+          <span id="cartTotal">$0.00</span>
+        </div>
+      </div>
+      <button class="btn btn--primary btn--full btn--lg" id="checkoutBtn">
+        Proceder al pago
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <p class="cart-secure">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        Pago 100% seguro y encriptado
+      </p>
+    </div>
+  </aside>
+
+  <!-- ═══════════════════════════════════════════
+       MOBILE BOTTOM NAV
+  ═══════════════════════════════════════════ -->
+  <nav class="mobile-nav">
+    <button class="mobile-nav__item mobile-nav__item--active" onclick="scrollToTop()">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>Inicio</span>
+    </button>
+    <button class="mobile-nav__item" onclick="scrollToCategories()">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      <span>Categorías</span>
+    </button>
+    <button class="mobile-nav__item" onclick="document.getElementById('branchesSection').scrollIntoView({behavior:'smooth'})">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>Sucursales</span>
+    </button>
+    <button class="mobile-nav__item" onclick="filterByCategory('ofertas')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+      <span>Ofertas</span>
+    </button>
+    <button class="mobile-nav__item" onclick="openCart()" id="mobileCartBtn">
+      <div style="position:relative;display:inline-block">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="cart-badge cart-badge--mobile" id="mobileBadge">0</span>
+      </div>
+      <span>Carrito</span>
+    </button>
+  </nav>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ═══════════════════════════════════════════
+       WHATSAPP FLOTANTE
+  ═══════════════════════════════════════════ -->
+  <a class="wa-float"
+     href="https://wa.me/523516906500?text=Hola!%20Me%20gustar%C3%ADa%20hacer%20un%20pedido%20en%20Superfarmacia%20Zamora%20%F0%9F%9B%92"
+     target="_blank"
+     rel="noopener"
+     aria-label="Contáctanos por WhatsApp">
+    <svg class="wa-float__icon" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    <span class="wa-float__label">¿Te ayudamos?</span>
+  </a>
+
+  <!-- Factura success modal -->
+  <div class="modal-overlay modal-overlay--hidden" id="facturaModal">
+    <div class="modal">
+      <div class="modal__icon">✅</div>
+      <h3 class="modal__title">¡Solicitud enviada!</h3>
+      <p class="modal__text">Tu factura será enviada al correo registrado en los próximos <strong>10 minutos</strong>. Revisa también tu carpeta de spam.</p>
+      <p class="modal__sub">Para cualquier duda escríbenos al <strong>351-690-6500</strong></p>
+      <button class="btn btn--primary btn--full" onclick="closeFacturaModal()">Aceptar</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
